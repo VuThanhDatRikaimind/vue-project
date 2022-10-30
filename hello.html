@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VueJS</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+
+    <h1>{{ message }}</h1>
+    <input @keyup.enter="greet(message + '!!!!!!!!!!')" v-model="message" type="text"/>  
+    <hr>
+    <button @click="toggleBox">Show Box</button>
+    <div v-show="isVisible" class = "box">
+      <h2>Box</h2>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    let app = Vue.createApp({
+      data: function() {
+        return {
+          message: 'Hello World',
+          isVisible: false
+        }
+      },
+      methods: {
+        toggleBox() {
+          this.isVisible = !this.isVisible
+        },
+        greet(msg) {
+          console.log(msg)
+        }
+      }
+    })
+    app.mount('#app')
+  </script>
+</body>
+</html>
